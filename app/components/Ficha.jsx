@@ -13,8 +13,7 @@ export default function Ficha({ props }) {
   const [displayedInfo, setDisplayedInfo] = useState([]);
 
   function handleInfo(props) {
-    setDisplayedInfo(props);
-    console.log(props);
+    displayedInfo.length == 0 ? setDisplayedInfo(props) : setDisplayedInfo([]);
   }
 
   return (
@@ -29,13 +28,12 @@ export default function Ficha({ props }) {
         </td>
         <td>{props.Descripción}</td>
         <td>
-          <button onClick={() => handleInfo(props)}>Click</button>
+          <button onClick={() => handleInfo(props)}>Ver Más</button>
           <Modal
             displayedInfo={displayedInfo}
             setDisplayedInfo={setDisplayedInfo}
           />
         </td>
-        <td></td>
       </tr>
     </>
   );
