@@ -11,6 +11,7 @@ export default function FilterButton({ ...props }) {
         }
         onClick={() => {
           props.setFilter(props.filterWord);
+          props.filterList(props.filterWord);
         }}
       >
         {props.filterWord}

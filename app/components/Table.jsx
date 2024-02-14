@@ -10,28 +10,32 @@ export default function Main(props) {
 
   function filterList(f) {
     setFilter(f);
-    setFilteredList(props.data.filter((ficha) => ficha.Categoria === f));
+    setFilteredList(props.data.filter((ficha) => ficha.Categoría === f));
   }
+
+  const categories = ["Todas", "Emergencias", "Cuidado de cuerpa y mente"];
+
+  props.data.map((ficha) => {
+    categories.includes(ficha.Categoría)
+      ? null
+      : categories.push(ficha.Categoría);
+  });
 
   return (
     <>
       <h2 className="text-4xl pl-3 font-bold mb-2">Recursero</h2>
       <div className="filters menu lg:menu-horizontal gap-3 mb-2">
-        <FilterButton
-          filterWord="Todas"
-          setFilter={setFilter}
-          filter={filter}
-        />
-        <FilterButton
-          filterWord="Emergencias"
-          setFilter={setFilter}
-          filter={filter}
-        />
-        <FilterButton
-          filterWord="Cuidado de cuerpa y mente"
-          setFilter={setFilter}
-          filter={filter}
-        />
+        {categories.map((c, i) => {
+          return (
+            <FilterButton
+              filterWord={c}
+              setFilter={setFilter}
+              filter={filter}
+              filterList={filterList}
+              key={i}
+            />
+          );
+        })}
       </div>
       {filter != "Todas" ? (
         <h3 className="category pl-3 mb-8"> {filter}</h3>

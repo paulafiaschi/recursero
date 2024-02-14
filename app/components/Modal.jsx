@@ -3,8 +3,6 @@ import Image from "next/image";
 import Row from "./Row";
 
 export default function Modal({ setDisplayedInfo, displayedInfo }) {
-  //   console.log(displayedInfo);
-
   return (
     <>
       <div
