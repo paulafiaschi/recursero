@@ -26,7 +26,7 @@ export default function Ficha({ props }) {
         <td className="text-wrap max-w-[30ch]">{props.Descripción}</td>
         <td>
           <button
-            className="btn btn-outline btn-success"
+            className="btn btn-outline btn-success ml-auto block"
             onClick={() => handleInfo(props)}
           >
             Ver Más

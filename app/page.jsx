@@ -27,8 +27,6 @@ export default async function Home() {
       <NavBar />
       <Hero />
       <main className="p-5 md:p-32" id="recursero">
-        {/* <label>Con qué te podemos ayudar?</label>
-      <input type="search"></input> */}
         <Table data={data} />
       </main>
     </>
