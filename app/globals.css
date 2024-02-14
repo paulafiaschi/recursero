@@ -24,11 +24,9 @@ tr {
 }
 .my-modal {
   position: fixed;
-  background-color: white;
   width: 70vw;
   min-height: 70vh;
   z-index: 99;
-  padding: 3rem 5rem;
 }
 
 .hide {
@@ -45,20 +43,9 @@ tr {
   top: 1rem;
 }
 
-.contact {
-  background-color: #f4f4f4;
-}
-
-.contact h4 {
-  background-color: #d9d9d9;
-}
-
 .contact-heading {
   min-width: 150px;
   color: #666;
-}
-.category {
-  color: #9d9d9d;
 }
 
 /* Mobile */

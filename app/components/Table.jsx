@@ -13,7 +13,7 @@ export default function Main(props) {
     setFilteredList(props.data.filter((ficha) => ficha.Categoría === f));
   }
 
-  const categories = ["Todas", "Emergencias", "Cuidado de cuerpa y mente"];
+  const categories = ["Todas"];
 
   props.data.map((ficha) => {
     categories.includes(ficha.Categoría)
@@ -23,8 +23,8 @@ export default function Main(props) {
 
   return (
     <>
-      <h2 className="text-4xl pl-3 font-bold mb-2">Recursero</h2>
-      <div className="filters menu lg:menu-horizontal gap-3 mb-2">
+      <h2 className="text-4xl pl-3 font-bold mb-2">Categorías</h2>
+      <div className="filters menu lg:menu-horizontal gap-3 mb-8">
         {categories.map((c, i) => {
           return (
             <FilterButton
@@ -37,11 +37,7 @@ export default function Main(props) {
           );
         })}
       </div>
-      {filter != "Todas" ? (
-        <h3 className="category pl-3 mb-8"> {filter}</h3>
-      ) : (
-        <h3 className="mb-8">&nbsp;</h3>
-      )}
+
       <div className="overflow-x-auto">
         <table className="table p-12 m-auto">
           <tbody>

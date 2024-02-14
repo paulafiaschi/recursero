@@ -2,6 +2,7 @@ import Image from "next/image";
 import Table from "../app/components/Table";
 import NavBar from "./components/NavBar";
 import Hero from "./components/Hero";
+import Footer from "./components/Footer";
 
 async function getData() {
   const res = await fetch("https://lasotras-723a.restdb.io/rest/recursero", {
@@ -26,9 +27,10 @@ export default async function Home() {
     <>
       <NavBar />
       <Hero />
-      <main className="p-5 md:p-32" id="recursero">
+      <main className="p-5 md:py-24 md:px-32" id="recursero">
         <Table data={data} />
       </main>
+      <Footer />
     </>
   );
 }

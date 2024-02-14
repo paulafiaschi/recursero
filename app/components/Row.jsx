@@ -2,7 +2,10 @@ import Image from "next/image";
 import Link from "next/link";
 
 export default function Row({ ...props }) {
-  //   console.log(props.displayedInfo);
+  let languages = [];
+  if (props.row === "Idiomas" && props.displayedInfo != undefined) {
+    languages = props.displayedInfo.split(",");
+  }
 
   return props.displayedInfo != "" ? (
     <div className="contact-row flex py-3 gap-3">
@@ -27,6 +30,23 @@ export default function Row({ ...props }) {
           >
             {props.displayedInfo}
           </Link>
+        ) : props.row === "Idiomas" && props.displayedInfo != undefined ? (
+          <>
+            {languages.map((lang) => {
+              return (
+                <>
+                  <Image
+                    src={`/${lang}.svg`}
+                    width={20}
+                    height={20}
+                    alt={`/${lang}.svg`}
+                    key={lang}
+                  />
+                  <p className="ml-1 mr-4">{lang}</p>
+                </>
+              );
+            })}
+          </>
         ) : (
           props.displayedInfo
         )}
