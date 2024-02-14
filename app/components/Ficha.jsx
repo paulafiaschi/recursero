@@ -18,17 +18,19 @@ export default function Ficha({ props }) {
 
   return (
     <>
-      <tr className="hover">
-        <td>
-          <p>
-            {props.Nombre}
-            <br></br>
-            {props.Teléfono}
-          </p>
+      <tr className="hover h-28">
+        <td className="md:max-w-36">
+          <p className="text-lg font-bold">{props.Nombre}</p>
+          <p>{props.Teléfono}</p>
         </td>
-        <td>{props.Descripción}</td>
+        <td className="text-wrap max-w-[30ch]">{props.Descripción}</td>
         <td>
-          <button onClick={() => handleInfo(props)}>Ver Más</button>
+          <button
+            className="btn btn-outline btn-success"
+            onClick={() => handleInfo(props)}
+          >
+            Ver Más
+          </button>
           <Modal
             displayedInfo={displayedInfo}
             setDisplayedInfo={setDisplayedInfo}

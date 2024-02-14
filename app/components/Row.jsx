@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 
 export default function Row({ ...props }) {
   //   console.log(props.displayedInfo);
@@ -19,13 +20,13 @@ export default function Row({ ...props }) {
         {props.row === "Web" &&
         props.displayedInfo != undefined &&
         props.displayedInfo.startsWith("https://") === true ? (
-          <a
+          <Link
             href={props.displayedInfo}
             target="_blank"
             className="underline text-sky-600 hover:text-sky-900"
           >
             {props.displayedInfo}
-          </a>
+          </Link>
         ) : (
           props.displayedInfo
         )}
