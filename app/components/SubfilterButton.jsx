@@ -1,7 +1,6 @@
 import { useState } from "react";
 
 export default function SubfilterButton({ ...props }) {
-  console.log(props);
   return (
     <>
       <button
@@ -11,8 +10,8 @@ export default function SubfilterButton({ ...props }) {
             : "btn btn-outline btn-info"
         }
         onClick={() => {
-          props.setSubcategory(props.filterWord);
           props.filterList(props.filter);
+          props.subfilterList(props.filterWord);
         }}
       >
         {props.filterWord}

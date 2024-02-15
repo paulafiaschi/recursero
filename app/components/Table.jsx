@@ -11,6 +11,7 @@ export default function Main(props) {
   const [filteredList, setFilteredList] = useState(props.data);
   const [subcategories, setSubcategories] = useState([new Set()]);
   const [subcategory, setSubcategory] = useState("");
+  const [subfilteredList, setSubfilteredList] = useState([]);
 
   useEffect(() => {
     setSubcategories([]);
@@ -22,9 +23,15 @@ export default function Main(props) {
 
   function filterList(f) {
     setFilter(f);
-    subcategory != ""
-      ? console.log("subcategory", subcategory)
-      : setFilteredList(props.data.filter((ficha) => ficha.Categoría === f));
+    setFilteredList(props.data.filter((ficha) => ficha.Categoría === f));
+    setSubfilteredList([]);
+  }
+
+  function subfilterList(s) {
+    setSubcategory(s);
+    setSubfilteredList(
+      filteredList.filter((ficha) => ficha.Subcategoría === s)
+    );
   }
 
   const categories = ["Todas"];
@@ -52,20 +59,19 @@ export default function Main(props) {
         })}
       </div>
       <div className="filters menu lg:menu-horizontal gap-3 mb-8">
-        {/* {filter != "Todas"
+        {filter != "Todas"
           ? subcategories.map((s, i) => {
               return (
                 <SubfilterButton
                   filterWord={s}
-                  setSubcategory={setSubcategory}
-                  subcategory={subcategory}
+                  subfilterList={subfilterList}
                   filter={filter}
                   filterList={filterList}
                   key={i}
                 />
               );
             })
-          : null} */}
+          : null}
       </div>
 
       <div className="overflow-x-auto">
@@ -73,6 +79,10 @@ export default function Main(props) {
           <tbody>
             {filter === "Todas"
               ? props.data.map((ficha) => {
+                  return <Ficha props={ficha} key={ficha._id} />;
+                })
+              : subfilteredList.length != 0
+              ? subfilteredList.map((ficha) => {
                   return <Ficha props={ficha} key={ficha._id} />;
                 })
               : filteredList.map((ficha) => {
