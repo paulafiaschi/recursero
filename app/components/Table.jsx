@@ -1,16 +1,30 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Ficha from "./Ficha";
 import FilterButton from "./FilterButton";
+import SubfilterButton from "./SubfilterButton";
+import { create } from "domain";
 
 export default function Main(props) {
   const [filter, setFilter] = useState("Todas");
   const [filteredList, setFilteredList] = useState(props.data);
+  const [subcategories, setSubcategories] = useState([new Set()]);
+  const [subcategory, setSubcategory] = useState("");
+
+  useEffect(() => {
+    setSubcategories([]);
+    const newSubcategories = new Set(
+      filteredList.map((item) => item.Subcategoría)
+    );
+    setSubcategories(Array.from(newSubcategories));
+  }, [filter, props.data, filteredList]);
 
   function filterList(f) {
     setFilter(f);
-    setFilteredList(props.data.filter((ficha) => ficha.Categoría === f));
+    subcategory != ""
+      ? console.log("subcategory", subcategory)
+      : setFilteredList(props.data.filter((ficha) => ficha.Categoría === f));
   }
 
   const categories = ["Todas"];
@@ -36,6 +50,22 @@ export default function Main(props) {
             />
           );
         })}
+      </div>
+      <div className="filters menu lg:menu-horizontal gap-3 mb-8">
+        {/* {filter != "Todas"
+          ? subcategories.map((s, i) => {
+              return (
+                <SubfilterButton
+                  filterWord={s}
+                  setSubcategory={setSubcategory}
+                  subcategory={subcategory}
+                  filter={filter}
+                  filterList={filterList}
+                  key={i}
+                />
+              );
+            })
+          : null} */}
       </div>
 
       <div className="overflow-x-auto">
