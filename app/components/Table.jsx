@@ -13,7 +13,7 @@ export default function Main(props) {
   const [subcategory, setSubcategory] = useState("");
   const [subfilteredList, setSubfilteredList] = useState([]);
 
-  const [isSearching, setIsSearching] = useState(false);
+  const [isSearching, setIsSearching] = useState(0);
   const [searchedResults, setSearchedResults] = useState([]);
   const searchGroup = useRef();
   let cleanData = props.data;
@@ -75,19 +75,22 @@ export default function Main(props) {
   function searchInfo(e) {
     const input = e.target.value.toLowerCase();
 
-    const searchedResults = props.data.filter((item) => {
+    let searchedResults = props.data.filter((item) => {
       return (
         accent_fold(item.Nombre).toLowerCase().includes(input) ||
         accent_fold(item.Categoría).toLowerCase().includes(input)
       );
     });
-    console.log("searched", searchedResults);
-    // searchedProducts.length === 0 ? setNoProductsFound(true) : setNoProductsFound(false);
-    setIsSearching(true);
+
     input === ""
-      ? setSearchedResults([]) && setIsSearching(false)
+      ? (searchedResults = [] && setIsSearching(0))
       : setSearchedResults(searchedResults);
-    console.log(input);
+
+    searchedResults === undefined
+      ? setIsSearching(0)
+      : searchedResults != undefined && searchedResults.length == 0
+      ? setIsSearching(2)
+      : setIsSearching(1);
   }
 
   cleanData =
@@ -102,18 +105,6 @@ export default function Main(props) {
     <>
       <div className="search">
         <label className="input input-bordered flex items-center gap-2 w-96">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 16 16"
-            fill="currentColor"
-            className="w-4 h-4 opacity-70"
-          >
-            <path
-              fillRule="evenodd"
-              d="M9.965 11.026a5 5 0 1 1 1.06-1.06l2.755 2.754a.75.75 0 1 1-1.06 1.06l-2.755-2.754ZM10.5 7a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0Z"
-              clipRule="evenodd"
-            />
-          </svg>
           <input
             type="text"
             className="grow"
@@ -137,47 +128,59 @@ export default function Main(props) {
         </label>
       </div>
 
-      <h2 className="text-4xl pl-3 font-bold mb-2">Categorías</h2>
-      <div className="filters menu lg:menu-horizontal gap-3 mb-2 w-full">
-        {categories.map((c, i) => {
-          return (
-            <FilterButton
-              filterWord={c}
-              setFilter={setFilter}
-              filter={filter}
-              filterList={filterList}
-              key={i}
-            />
-          );
-        })}
-      </div>
-      <div className="filters menu lg:menu-horizontal gap-3 mb-8">
-        {filter != "Todas"
-          ? subcategories.map((s, i) => {
+      {isSearching === 0 ? (
+        <h2 className="text-4xl pl-3 font-bold mb-2"> Categorías</h2>
+      ) : isSearching === 1 ? (
+        <h2 className="text-4xl pl-3 font-bold mb-8">Resultados</h2>
+      ) : isSearching === 2 ? (
+        <h2 className="text-4xl pl-3 font-bold mb-8">
+          Ningún resultado :&#40;
+        </h2>
+      ) : null}
+
+      {isSearching === 0 && (
+        <>
+          <div className="filters menu lg:menu-horizontal gap-3 mb-2 w-full">
+            {categories.map((c, i) => {
               return (
-                <SubfilterButton
-                  filterWord={s}
-                  subfilterList={subfilterList}
+                <FilterButton
+                  filterWord={c}
+                  setFilter={setFilter}
                   filter={filter}
                   filterList={filterList}
                   key={i}
-                  subcategory={subcategory}
                 />
               );
-            })
-          : null}
-        {filter != "Todas" && subcategory != "" ? (
-          <SubfilterButton
-            filterWord={"Limpiar"}
-            subfilterList={subfilterList}
-            filter={filter}
-            filterList={filterList}
-            key={999}
-            subcategory={subcategory}
-          />
-        ) : null}
-      </div>
-
+            })}
+          </div>
+          <div className="filters menu lg:menu-horizontal gap-3 mb-8">
+            {filter != "Todas"
+              ? subcategories.map((s, i) => {
+                  return (
+                    <SubfilterButton
+                      filterWord={s}
+                      subfilterList={subfilterList}
+                      filter={filter}
+                      filterList={filterList}
+                      key={i}
+                      subcategory={subcategory}
+                    />
+                  );
+                })
+              : null}
+            {filter != "Todas" && subcategory != "" ? (
+              <SubfilterButton
+                filterWord={"Limpiar"}
+                subfilterList={subfilterList}
+                filter={filter}
+                filterList={filterList}
+                key={999}
+                subcategory={subcategory}
+              />
+            ) : null}
+          </div>
+        </>
+      )}
       <div className="overflow-x-auto">
         <table className="table p-12 m-auto">
           <tbody>
