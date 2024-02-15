@@ -16,6 +16,7 @@ export default function Main(props) {
   const [isSearching, setIsSearching] = useState(false);
   const [searchedResults, setSearchedResults] = useState([]);
   const searchGroup = useRef();
+  let cleanData = props.data;
 
   useEffect(() => {
     setSubcategories([]);
@@ -48,26 +49,71 @@ export default function Main(props) {
       : categories.push(ficha.Categoría);
   });
 
+  var accent_map = {
+    á: "a",
+    é: "e",
+    í: "i",
+    ó: "o",
+    ú: "u",
+    Á: "a",
+    É: "e",
+    Í: "i",
+    Ó: "o",
+    Ú: "u",
+  };
+  function accent_fold(s) {
+    if (!s) {
+      return "";
+    }
+    var ret = "";
+    for (var i = 0; i < s.length; i++) {
+      ret += accent_map[s.charAt(i)] || s.charAt(i);
+    }
+    return ret;
+  }
+
   function searchInfo(e) {
     const input = e.target.value.toLowerCase();
+
     const searchedResults = props.data.filter((item) => {
       return (
-        item.Nombre.toLowerCase().includes(input) ||
-        item.Categoría.toLowerCase().includes(input)
+        accent_fold(item.Nombre).toLowerCase().includes(input) ||
+        accent_fold(item.Categoría).toLowerCase().includes(input)
       );
     });
     console.log("searched", searchedResults);
     // searchedProducts.length === 0 ? setNoProductsFound(true) : setNoProductsFound(false);
-
-    input === "" ? setSearchedResults([]) : setSearchedResults(searchedResults);
-    // console.log(input);
+    setIsSearching(true);
+    input === ""
+      ? setSearchedResults([]) && setIsSearching(false)
+      : setSearchedResults(searchedResults);
+    console.log(input);
   }
 
+  cleanData =
+    searchedResults.length !== 0
+      ? searchedResults
+      : subfilteredList.length !== 0
+      ? subfilteredList
+      : filter === "Todas"
+      ? props.data
+      : filteredList;
   return (
     <>
-      {/* Search starts */}
       <div className="search">
         <label className="input input-bordered flex items-center gap-2 w-96">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 16 16"
+            fill="currentColor"
+            className="w-4 h-4 opacity-70"
+          >
+            <path
+              fillRule="evenodd"
+              d="M9.965 11.026a5 5 0 1 1 1.06-1.06l2.755 2.754a.75.75 0 1 1-1.06 1.06l-2.755-2.754ZM10.5 7a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0Z"
+              clipRule="evenodd"
+            />
+          </svg>
           <input
             type="text"
             className="grow"
@@ -90,8 +136,6 @@ export default function Main(props) {
           </svg>
         </label>
       </div>
-
-      {/* Search ends */}
 
       <h2 className="text-4xl pl-3 font-bold mb-2">Categorías</h2>
       <div className="filters menu lg:menu-horizontal gap-3 mb-2 w-full">
@@ -137,17 +181,9 @@ export default function Main(props) {
       <div className="overflow-x-auto">
         <table className="table p-12 m-auto">
           <tbody>
-            {filter === "Todas"
-              ? props.data.map((ficha) => {
-                  return <Ficha props={ficha} key={ficha._id} />;
-                })
-              : subfilteredList.length != 0
-              ? subfilteredList.map((ficha) => {
-                  return <Ficha props={ficha} key={ficha._id} />;
-                })
-              : filteredList.map((ficha) => {
-                  return <Ficha props={ficha} key={ficha._id} />;
-                })}
+            {cleanData.map((ficha) => {
+              return <Ficha props={ficha} key={ficha._id} />;
+            })}
           </tbody>
         </table>
       </div>
