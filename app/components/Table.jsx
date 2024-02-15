@@ -25,10 +25,12 @@ export default function Main(props) {
     setFilter(f);
     setFilteredList(props.data.filter((ficha) => ficha.Categoría === f));
     setSubfilteredList([]);
+    setSubcategory("");
   }
 
   function subfilterList(s) {
-    setSubcategory(s);
+    s === "Limpiar" ? setSubcategory("") : setSubcategory(s);
+
     setSubfilteredList(
       filteredList.filter((ficha) => ficha.Subcategoría === s)
     );
@@ -45,7 +47,7 @@ export default function Main(props) {
   return (
     <>
       <h2 className="text-4xl pl-3 font-bold mb-2">Categorías</h2>
-      <div className="filters menu lg:menu-horizontal gap-3 mb-8">
+      <div className="filters menu lg:menu-horizontal gap-3 mb-2">
         {categories.map((c, i) => {
           return (
             <FilterButton
@@ -68,10 +70,21 @@ export default function Main(props) {
                   filter={filter}
                   filterList={filterList}
                   key={i}
+                  subcategory={subcategory}
                 />
               );
             })
           : null}
+        {filter != "Todas" && subcategory != "" ? (
+          <SubfilterButton
+            filterWord={"Limpiar"}
+            subfilterList={subfilterList}
+            filter={filter}
+            filterList={filterList}
+            key={999}
+            subcategory={subcategory}
+          />
+        ) : null}
       </div>
 
       <div className="overflow-x-auto">
