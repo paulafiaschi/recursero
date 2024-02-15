@@ -27,7 +27,7 @@ export default async function Home() {
     <>
       <NavBar />
       <Hero />
-      <main className="p-5 md:py-24 md:px-32" id="recursero">
+      <main className="p-5 md:py-24 md:px-32 relative" id="recursero">
         <Table data={data} />
       </main>
       <Footer />

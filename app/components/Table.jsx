@@ -94,7 +94,7 @@ export default function Main(props) {
   }
 
   cleanData =
-    searchedResults.length !== 0
+    isSearching === 1
       ? searchedResults
       : subfilteredList.length !== 0
       ? subfilteredList
@@ -103,7 +103,7 @@ export default function Main(props) {
       : filteredList;
   return (
     <>
-      <div className="search">
+      <div className="search absolute right-32">
         <label className="input input-bordered flex items-center gap-2 w-96">
           <input
             type="text"
@@ -129,13 +129,18 @@ export default function Main(props) {
       </div>
 
       {isSearching === 0 ? (
-        <h2 className="text-4xl pl-3 font-bold mb-2"> Categorías</h2>
+        <h2 className="text-4xl pl-3 font-bold mb-8"> Categorías</h2>
       ) : isSearching === 1 ? (
         <h2 className="text-4xl pl-3 font-bold mb-8">Resultados</h2>
       ) : isSearching === 2 ? (
-        <h2 className="text-4xl pl-3 font-bold mb-8">
-          Ningún resultado :&#40;
-        </h2>
+        <>
+          <h2 className="text-4xl pl-3 font-bold mb-4">
+            Ningún resultado :&#40;
+          </h2>
+          <h3 className="text-2xl pl-3 mb-8">
+            Probá buscando un término diferente o explorá &darr;
+          </h3>
+        </>
       ) : null}
 
       {isSearching === 0 && (
