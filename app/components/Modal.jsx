@@ -10,7 +10,7 @@ export default function Modal({ setDisplayedInfo, displayedInfo }) {
           displayedInfo.length == 0 ? "hide" : "show"
         }`}
       >
-        <div className="my-modal flex flex-col align-center justify-between gap-9 bg-amber-50 px-28 py-16">
+        <div className="my-modal flex flex-col align-center justify-between gap-9 bg-amber-50 px-28 py-16 rounded-2xl">
           <button className="x" onClick={() => setDisplayedInfo([])}>
             <Image
               src="/cross.svg"

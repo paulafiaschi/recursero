@@ -48,6 +48,39 @@ tr {
   color: #666;
 }
 
+#envelope {
+  top: -5rem;
+  left: -10rem;
+}
+#luggage {
+  top: 10rem;
+  left: -15rem;
+}
+#alert {
+  top: 16rem;
+  left: 2rem;
+  /* animation: 5s infinite alternate slidein; */
+}
+#movies {
+  top: -8rem;
+  left: 12rem;
+}
+#health {
+  top: 5rem;
+  left: 20rem;
+}
+
+/* animations */
+@keyframes slidein {
+  from {
+    top: 16rem;
+  }
+
+  to {
+    top: 17rem;
+  }
+}
+
 /* Mobile */
 @media only screen and (max-width: 767px) {
   tr.hover.h-28 {
