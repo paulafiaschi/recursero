@@ -49,7 +49,7 @@ tr {
 }
 
 #envelope {
-  top: -5rem;
+  top: -12rem;
   left: -10rem;
 }
 #luggage {
@@ -87,5 +87,19 @@ tr {
     display: flex;
     flex-direction: column;
     height: fit-content !important;
+  }
+
+  #envelope {
+    top: -5rem;
+    left: -4rem;
+  }
+  #luggage {
+    top: 10rem;
+    left: -5rem;
+  }
+
+  #health {
+    top: 7rem;
+    left: 13rem;
   }
 }

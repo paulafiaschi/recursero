@@ -3,7 +3,7 @@ import Image from "next/image";
 
 export default function Hero() {
   return (
-    <div className="hero bg-amber-50">
+    <div className="hero bg-amber-50 h-screen">
       <div className="hero-content flex-col lg:flex-row-reverse pt-56 pb-48 gap-10">
         {/* <Image src={`/Web.svg`} width={35} height={35} alt={`/Web.svg`} /> */}
         <div className="hero-image relative">
@@ -54,7 +54,7 @@ export default function Hero() {
             id="alert"
           />
         </div>
-        <div>
+        <div className="md:mt-0 mt-40">
           <h1 className="text-5xl font-bold">Bienvenides al Recursero!</h1>
           <p className="py-6 max-w-[50ch] text-xl">
             En este espacio, podés acceder a una variedad de información que no
@@ -62,9 +62,9 @@ export default function Hero() {
             sean datos relevantes.
           </p>
 
-          {/* <Link href="#recursero" className="btn btn-success mt-8">
+          <Link href="#recursero" className="btn btn-success btn-wide mt-8">
             Explorar
-          </Link> */}
+          </Link>
         </div>
       </div>
     </div>

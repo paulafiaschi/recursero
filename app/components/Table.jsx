@@ -47,7 +47,7 @@ export default function Main(props) {
   return (
     <>
       <h2 className="text-4xl pl-3 font-bold mb-2">Categorías</h2>
-      <div className="filters menu lg:menu-horizontal gap-3 mb-2">
+      <div className="filters menu lg:menu-horizontal gap-3 mb-2 w-full">
         {categories.map((c, i) => {
           return (
             <FilterButton
