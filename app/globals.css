@@ -70,6 +70,10 @@ tr {
   left: 20rem;
 }
 
+.search {
+  top: 6.5rem;
+}
+
 /* animations */
 @keyframes slidein {
   from {

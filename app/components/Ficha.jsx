@@ -19,7 +19,7 @@ export default function Ficha({ props }) {
 
   return (
     <>
-      <tr className="hover h-28 md:h-52 py-8">
+      <tr className="hover h-28 md:h-52 py-8 border-green-600">
         <td className="md:max-w-36">
           <p className="text-lg font-bold">{props.Nombre}</p>
           <p className="text-neutral-400">

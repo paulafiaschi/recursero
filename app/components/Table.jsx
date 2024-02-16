@@ -103,7 +103,7 @@ export default function Main(props) {
       : filteredList;
   return (
     <>
-      <div className="search absolute right-32">
+      <div className="search absolute right-36 ">
         <label className="input input-bordered flex items-center gap-2 w-96">
           <input
             type="text"
@@ -127,19 +127,35 @@ export default function Main(props) {
           </svg>
         </label>
       </div>
-
+      <h2 className="text-3xl pl-3 font-bold mb-6 bg-amber-200 py-4">
+        Recursero
+      </h2>
       {isSearching === 0 ? (
-        <h2 className="text-4xl pl-3 font-bold mb-8"> Categorías</h2>
+        <h2 className="text-xl pl-3 my-8 mb-2"> Categorías</h2>
       ) : isSearching === 1 ? (
-        <h2 className="text-4xl pl-3 font-bold mb-8">Resultados</h2>
+        <>
+          <h2 className="text-xl pl-3 my-16">
+            Se encontraron {searchedResults.length} recursos
+          </h2>
+          <div className="text-sm breadcrumbs pl-3 bg-amber-100">
+            <ul>
+              <li>&nbsp;</li>
+            </ul>
+          </div>
+        </>
       ) : isSearching === 2 ? (
         <>
-          <h2 className="text-4xl pl-3 font-bold mb-4">
+          <h2 className="text-xl pl-3 font-bold my-16 mb-4">
             Ningún resultado :&#40;
           </h2>
-          <h3 className="text-2xl pl-3 mb-8">
+          <h3 className="text-lg pl-3 mb-8">
             Probá buscando un término diferente o explorá &darr;
           </h3>
+          <div className="text-sm breadcrumbs pl-3 bg-amber-100">
+            <ul>
+              <li>&nbsp;</li>
+            </ul>
+          </div>
         </>
       ) : null}
 
@@ -183,6 +199,13 @@ export default function Main(props) {
                 subcategory={subcategory}
               />
             ) : null}
+          </div>
+
+          <div className="text-sm breadcrumbs pl-3 bg-amber-100">
+            <ul>
+              {filter === "Todas" ? <li>&nbsp;</li> : <li>{filter}</li>}
+              {subcategory != "" ? <li>{subcategory}</li> : null}
+            </ul>
           </div>
         </>
       )}
