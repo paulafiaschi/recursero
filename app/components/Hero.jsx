@@ -57,7 +57,7 @@ export default function Hero() {
         <div className="md:mt-0 mt-40">
           <h1 className="text-5xl font-bold">Bienvenides al Recursero!</h1>
           <p className="py-6 max-w-[50ch] text-xl">
-            En este espacio, podés acceder a una variedad de información que no
+            En este espacio, puedes acceder a una variedad de información que no
             solo es valiosa, sino también está actualizada para garantizar que
             sean datos relevantes.
           </p>

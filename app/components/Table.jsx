@@ -149,7 +149,7 @@ export default function Main(props) {
             Ningún resultado :&#40;
           </h2>
           <h3 className="text-lg pl-3 mb-8">
-            Probá buscando un término diferente o explorá &darr;
+            Prueba buscando un término diferente o explora &darr;
           </h3>
           <div className="text-sm breadcrumbs pl-3 bg-amber-100">
             <ul>
