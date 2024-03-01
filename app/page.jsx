@@ -25,12 +25,12 @@ export default async function Home() {
 
   return (
     <>
-      <NavBar />
-      <Hero />
+      {/* <NavBar /> */}
+      {/* <Hero /> */}
       <main className="md:p-5 md:py-24 md:px-32 relative" id="recursero">
         <Table data={data} />
       </main>
-      <Footer />
+      {/* <Footer /> */}
     </>
   );
 }

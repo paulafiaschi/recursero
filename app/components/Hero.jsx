@@ -57,9 +57,11 @@ export default function Hero() {
         <div className="md:mt-0 mt-40">
           <h1 className="text-5xl font-bold">Bienvenides al Recursero!</h1>
           <p className="py-6 max-w-[50ch] text-xl">
-            En este espacio, puedes acceder a una variedad de información que no
-            solo es valiosa, sino también está actualizada para garantizar que
-            sean datos relevantes.
+            El recursero es una recopilación de información útil para personas
+            hispanohablantes que viven en Dinamarca. Es un documento vivo y
+            colectivo, gestionado por la Asociación Las Otras. No incluye
+            servicios que brindamos directamente, por lo que no nos hacemos
+            responsables por los mismos.
           </p>
 
           <Link href="#recursero" className="btn btn-success btn-wide mt-8">
