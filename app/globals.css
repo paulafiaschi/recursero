@@ -94,7 +94,7 @@ tr {
   }
 
   #envelope {
-    top: -5rem;
+    top: -3rem;
     left: -4rem;
   }
   #luggage {
@@ -103,7 +103,28 @@ tr {
   }
 
   #health {
-    top: 7rem;
-    left: 13rem;
+    top: 12rem;
+    left: 11rem;
+  }
+  #movies {
+    top: -4rem;
+    left: 12rem;
+  }
+
+  .overlay {
+    justify-content: flex-start;
+  }
+  .my-modal {
+    width: 95vw;
+  }
+  .x {
+    right: 1rem;
+  }
+  /* .contact-heading img {
+    height: 25px;
+    width: 25px;
+  }*/
+  .contact-heading {
+    min-width: auto;
   }
 }

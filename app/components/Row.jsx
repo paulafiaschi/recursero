@@ -16,7 +16,7 @@ export default function Row({ ...props }) {
           height={35}
           alt={`/${props.row}.svg`}
         />
-        <p className="ml-3">{props.row}</p>
+        <p className="ml-3 hidden md:block">{props.row}</p>
       </div>
 
       <div className="contant-cell flex items-center text-wrap max-w-[50ch]">

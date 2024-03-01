@@ -103,8 +103,8 @@ export default function Main(props) {
       : filteredList;
   return (
     <>
-      <div className="search absolute right-36 ">
-        <label className="input input-bordered flex items-center gap-2 w-96">
+      <div className="search md:absolute md:right-36">
+        <label className="input input-bordered flex items-center gap-2 md:w-96 w-80 mx-auto mb-8">
           <input
             type="text"
             className="grow"

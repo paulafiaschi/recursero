@@ -3,8 +3,8 @@ import Image from "next/image";
 
 export default function Hero() {
   return (
-    <div className="hero bg-amber-50 h-screen">
-      <div className="hero-content flex-col lg:flex-row-reverse pt-56 pb-48 gap-10">
+    <div className="hero bg-amber-50 md:h-screen mb-8">
+      <div className="hero-content flex-col lg:flex-row-reverse md:pt-56 pt-40 md:pb-48 pb-24 gap-10">
         {/* <Image src={`/Web.svg`} width={35} height={35} alt={`/Web.svg`} /> */}
         <div className="hero-image relative">
           <Image

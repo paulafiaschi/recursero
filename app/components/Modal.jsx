@@ -10,7 +10,7 @@ export default function Modal({ setDisplayedInfo, displayedInfo }) {
           displayedInfo.length == 0 ? "hide" : "show"
         }`}
       >
-        <div className="my-modal flex flex-col align-center justify-between gap-9 bg-amber-50 px-28 py-16 rounded-2xl">
+        <div className="my-modal flex flex-col align-center justify-between gap-9 bg-amber-50 md:px-16 md:py-12 p-3 pt-5 rounded-2xl">
           <button className="x" onClick={() => setDisplayedInfo([])}>
             <Image
               src="/cross.svg"
@@ -23,10 +23,10 @@ export default function Modal({ setDisplayedInfo, displayedInfo }) {
             {displayedInfo.Categoría} | {displayedInfo.Subcategoría}
           </p>
           <div className="description ">
-            <h2 className="text-4xl font-bold text-center my-3">
+            <h2 className="md:text-4xl text-2xl font-bold text-center my-3">
               {displayedInfo.Nombre}
             </h2>
-            <p className="text-center text-lg max-w-[70ch] block m-auto">
+            <p className="text-center md:text-lg text-base max-w-[70ch] block m-auto">
               {displayedInfo.Descripción}
             </p>
           </div>
