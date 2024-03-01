@@ -7,11 +7,24 @@ export default function NavBar() {
         <a className="btn btn-ghost text-xl">Las Otras</a>
       </div>
       <div className="flex-none">
-        {/* <ul className="menu menu-horizontal px-1">
+        <ul className="menu menu-horizontal px-1">
           <li>
-            <a>Buscar</a>
+            <Link
+              href="https://lasotras.dk/acerca-del-recursero/ "
+              target="_blank"
+            >
+              Acerca de
+            </Link>
           </li>
           <li>
+            <Link
+              href="https://lasotras.dk/llegue-o-me-voy-de-dinamarca-ahora-que/"
+              target="_blank"
+            >
+              Llegué/Me voy
+            </Link>
+          </li>
+          {/* <li>
             <details>
               <summary>Categorías</summary>
               <ul className="p-2 bg-base-100 rounded-t-none">
@@ -23,8 +36,8 @@ export default function NavBar() {
                 </li>
               </ul>
             </details>
-          </li>
-        </ul> */}
+          </li> */}
+        </ul>
       </div>
     </div>
   );
